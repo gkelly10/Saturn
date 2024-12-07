@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Day</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="row">
+
+    <!-- LOCAL INFORMATION -->
+     <!-- <div class="col-sm-6">
+        <div class="well">
+            <h3><span class="fa fa-user"></span> Local</h3>
+
+            <% if (user.local.email) { %>
+                <p>
+                    <strong>id</strong>: <%= user._id %><br>
+                    <strong>email</strong>: <%= user.local.email %><br>
+                    <strong>password</strong>: <%= user.local.password %>
+                </p>
+
+                <a href="/unlink/local" class="btn btn-default">Unlink</a>
+            <% } else { %>
+                <a href="/connect/local" class="btn btn-default">Connect Local</a>
+            <% } %>
+
+        </div>
+    </div> -->
+
+    <nav>
+      <a href="profile" id="profileBtn">Profile</a>
+      <a href="task-for-the-day" id="taskForTheDayBtn">Task for the Day</a>
+      <!-- <a href="calendar.html" id="calendarBtn">Calendar</a> -->
+      <a href="feedback-tracker" id="feedbackTrackerBtn">Task Feedback Tracker</a>
+      <a href="habit-builder" id="habitBuilderBtn">Habit Builder</a>
+    </nav>
+
+    <header class="container-for-quote-generator">
+      <h1 class="h1-for-quote-generator">Quote Of The Day</h1>
+    </header>
+  
+    <section class="quote-widget">
+      <blockquote id="quote-text" class="quote-text"></blockquote>
+      <p id="quote-author" class="quote-author"></p>
+      <button class="quote-button" id="quote-button">Get New Quote</button>
+    </section>
+  <!-- taks and calendar -->
+    <section class="task-and-calendar-container">
+<!-- task for the -->
+<form id="dailytaskForm" action="/tasksDaily" method="POST">
+  <section class="task-widget-for-the-day">
+    <h2 class="h1-for-task-of-the-day">Tasks for the Day</h2>
+    
+    <section class="task-for-the-day">
+      <label for="title" class="task-title-label"><strong>Task</strong></label>
+      <input type="text" name="title" id="title" placeholder="Enter Task" required>
+    </section>
+    
+    <section class="task-for-the-day">
+      <p><strong>Completed</strong></p>
+      <select name="complete" class="complete" required>
+        <option value="completed">Completed</option>
+        <option value="pending">Pending</option>
+      </select>
+    </section>
+
+    <button type="submit" class="task-button-for-the-day">Add Task</button>
+  </section>
+</form>
+
+
+  <section class="task-daily">
+    <% for (let i = 0; i < tasksDaily.length; i++) { %>
+        <section class="info">
+          <h3><strong>Task</strong> <%= tasksDaily[i].title %></h3> 
+          <p><strong>Complete</strong> <%= tasksDaily[i].complete %></p>
+        </section>
+        <button class="edit-btn-daily" data-id="<%= tasksDaily[i]._id %>">Edit</button>
+        <button class="delete-btn-daily" data-id="<%= tasksDaily[i]._id %>">Delete</button>
+      </section>
+    <% } %>
+    </section>
+
+
+      
+
+
+  <h1>Task Feedback Tracker</h1>
+  <form id="taskForm" action="/tasks" method="POST">
+    <input type="text" name="title" placeholder="Task Title" required>
+    <p><strong>Feedback</strong></p>
+    <select name="feedback" class="feedback">
+        <option value="pending">Pending</option>
+        <option value="completed">Completed</option>
+        <option value="challenging">Challenging</option>
+    </select>
+    <button type="submit">Add Task</button>
+    
+  </form>
+
+  <section class="task-container-for-styling">
+    <% for (let i = 0; i < tasks.length; i++) { %>
+        <section class="info">
+          <h3><strong>Task:</strong> <%= tasks[i].title %></h3> 
+          <p><strong>Feedback:</strong> <%= tasks[i].feedback %></p>
+        </section>
+        <button class="edit-btn" data-id="<%= tasks[i]._id %>">Edit</button>
+        <button class="delete-btn" data-id="<%= tasks[i]._id %>">Delete</button>
+      </section>
+    <% } %>
+    </section>
+
+  
+    <!-- Habit builder -->
+  
+
+ 
+    
+    
+    <header class="container-for-habit-builder">
+      <h1 class="h1-for-habit-builder">Habit Builder</h1>
+    </header>
+    <section class="habit-builder">
+      <section class="habit">
+        <p class="habit-title">Drink Water</p>
+        <progress class="habit-progress" value="70" max="100"></progress>
+        <button class="habit-button">Update Progress</button>
+      </section>
+      <section class="habit">
+        <p class="habit-title">Read for 15 Minutes</p>
+        <progress class="habit-progress" value="90" max="100"></progress>
+        <button class="habit-button">Update Progress</button>
+      </section>
+    </section>
+
+  <script src="main.js"></script>
+</body>
+</html>
