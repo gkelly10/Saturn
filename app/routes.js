@@ -197,6 +197,10 @@ app.delete('/tasksDaily', (req, res) => {
             failureFlash : true // allow flash messages
         }));
 
+        app.get('/logout', function(req, res) {
+            res.render('login.ejs', { message: req.flash('loginMessage') });
+        });
+
 // =============================================================================
 // UNLINK ACCOUNTS =============================================================
 // =============================================================================

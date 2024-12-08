@@ -125,7 +125,16 @@ button:hover {
   justify-content: space-between;
   align-items: center;
 }
-
+.info-feedback {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
 /* Task actions (buttons) */
 .task-actions {
   display: flex;
@@ -250,12 +259,14 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
   margin-bottom: 20px;
+  width: 90%;
 }
 
 .h1-for-task-of-the-day {
-  font-size: 1.8em;
+  font-size: 1.5em;
   color: #38446b;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .task-for-the-day {
@@ -459,6 +470,11 @@ body {
 .submit-button:hover {
   background-color: #2e3a57; 
 }  
+
+.feedback-h2{
+  text-align: center;
+  margin-top: 1px;
+}
 /* habit builder */
 .container-for-habit-builder {
   width: 90%;
@@ -532,6 +548,7 @@ body {
   width: 700px;
   max-width: 600px;
   margin: 20px 0;
+  margin-left: 19%;
 }
 
 .h1-for-quote-generator {
@@ -624,7 +641,7 @@ margin-top: 20px;
 
 /* Header styling */
 .container h2 {
-  font-size: 1.8em;
+  font-size: 1.5em;
   color: #38446b;
   margin-bottom: 15px;
   text-align: center;
@@ -722,3 +739,45 @@ margin-top: 20px;
 .habits li button:hover {
   opacity: 0.8;
 }
+.nav-top{
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+
+@media (max-width: 768px) {
+  /* Make the form and containers full width for small screens */
+  form,
+  .task-widget-for-the-day,
+  .calendar-widget,
+  .feedback-tracker-container,
+  .container-for-habit-builder {
+    width: 90%; /* Adjust width to fit smaller screens */
+    margin: 0 auto; /* Center content horizontally */
+  }
+
+  /* Stack task and calendar sections vertically */
+  .task-and-calendar-container {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items */
+  }
+
+  /* Ensure buttons and inputs fit well on small screens */
+  input, button {
+    font-size: 1em; /* Keep text readable */
+    width: 100%; /* Full width for mobile */
+  }
+
+  /* Adjust task items and info sections */
+  .task-item, .info {
+    flex-direction: column; /* Stack content */
+    align-items: flex-start; /* Align to the left */
+  }
+
+  .task-actions {
+    justify-content: center; /* Center task action buttons */
+  }
+}
+
+
