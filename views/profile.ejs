@@ -49,11 +49,11 @@
     </section>
   <!-- taks and calendar -->
     <section class="task-and-calendar-container">
-<!-- task for the -->
-<form id="dailytaskForm" action="/tasksDaily" method="POST">
-  <section class="task-widget-for-the-day">
-    <h2 class="h1-for-task-of-the-day">Tasks for the Day</h2>
-    
+<!-- task for the  day-->
+<section class="task-widget-for-the-day">
+  <h2 class="h1-for-task-of-the-day">Tasks for the Day</h2>
+  
+  <form id="dailytaskForm" action="/tasksDaily" method="POST">
     <section class="task-for-the-day">
       <label for="title" class="task-title-label"><strong>Task</strong></label>
       <input type="text" name="title" id="title" placeholder="Enter Task" required>
@@ -61,66 +61,98 @@
     
     <section class="task-for-the-day">
       <p><strong>Completed</strong></p>
-      <select name="complete" class="complete" required>
+      <select class="feedback-daily" name="complete" class="complete" required>
         <option value="completed">Completed</option>
         <option value="pending">Pending</option>
       </select>
     </section>
 
     <button type="submit" class="task-button-for-the-day">Add Task</button>
-  </section>
-</form>
-
-
-  <section class="task-daily">
-    <% for (let i = 0; i < tasksDaily.length; i++) { %>
-        <section class="info">
-          <h3><strong>Task</strong> <%= tasksDaily[i].title %></h3> 
-          <p><strong>Complete</strong> <%= tasksDaily[i].complete %></p>
-        </section>
-        <button class="edit-btn-daily" data-id="<%= tasksDaily[i]._id %>">Edit</button>
-        <button class="delete-btn-daily" data-id="<%= tasksDaily[i]._id %>">Delete</button>
-      </section>
-    <% } %>
-    </section>
-
-
-      
-
-
-  <h1>Task Feedback Tracker</h1>
-  <form id="taskForm" action="/tasks" method="POST">
-    <input type="text" name="title" placeholder="Task Title" required>
-    <p><strong>Feedback</strong></p>
-    <select name="feedback" class="feedback">
-        <option value="pending">Pending</option>
-        <option value="completed">Completed</option>
-        <option value="challenging">Challenging</option>
-    </select>
-    <button type="submit">Add Task</button>
-    
   </form>
 
-  <section class="task-container-for-styling">
-    <% for (let i = 0; i < tasks.length; i++) { %>
-        <section class="info">
-          <h3><strong>Task:</strong> <%= tasks[i].title %></h3> 
-          <p><strong>Feedback:</strong> <%= tasks[i].feedback %></p>
-        </section>
-        <button class="edit-btn" data-id="<%= tasks[i]._id %>">Edit</button>
-        <button class="delete-btn" data-id="<%= tasks[i]._id %>">Delete</button>
-      </section>
+  <!-- Tasks display section -->
+  <section class="task-daily">
+    <% for (let i = 0; i < tasksDaily.length; i++) { %>
+      <div class="info">
+        <h3><strong>Task:</strong> <%= tasksDaily[i].title %></h3>
+        <p><strong>Complete:</strong> <%= tasksDaily[i].complete %></p>
+        <div class="task-actions">
+          <button class="edit-btn-daily" data-id="<%= tasksDaily[i]._id %>">Edit</button>
+          <button class="delete-btn-daily" data-id="<%= tasksDaily[i]._id %>">Delete</button>
+        </div>
+      </div>
     <% } %>
-    </section>
+  </section>
+</section>
+
+
+   
+
+
+      <!--feedback tracker  -->
+
 
   
-    <!-- Habit builder -->
+      <section class="feedback-tracker-container">
+        <form id="taskForm" action="/tasks" method="POST">
+          <h1>Task Feedback Tracker</h1>
+          <input type="text" name="title" placeholder="Task Title" required>
+          <p><strong>Feedback</strong></p>
+          <select name="feedback" class="feedback">
+              <option value="pending">Pending</option>
+              <option value="completed">Completed</option>
+              <option value="challenging">Challenging</option>
+          </select>
+          <button type="submit">Add Task</button>
+        </form>
+      
+        <!-- Tasks display section -->
+        <section class="task-container-for-styling">
+          <% for (let i = 0; i < tasks.length; i++) { %>
+            <div class="info">
+              <h3><strong>Task:</strong> <%= tasks[i].title %></h3>
+              <p><strong>Feedback:</strong> <%= tasks[i].feedback %></p>
+              <div class="task-actions">
+                <button class="edit-btn" data-id="<%= tasks[i]._id %>">Edit</button>
+                <button class="delete-btn" data-id="<%= tasks[i]._id %>">Delete</button>
+              </div>
+            </div>
+          <% } %>
+        </section>
+      </section>
+      
+      
+      
+      
   
+    <!-- Habit builder -->
+  <div class="container">
+        <h2>HABITS</h2>
+        <p></p>
+        <form class="add-habit">
+          <input class="habit"  type="text"  name="habit" placeholder="Enter Habit Name" required/>
+          <input type="number" name="reps" placeholder="# of Repetitions" min="1"  required/>
+          <div class="frequency">
+            <label for="timeframe">Frequency: </label>
+            <select name="timeframe" id="timeframe">
+              <option value="Daily">Daily</option>
+              <option value="Weekly">Weekly</option>
+              <option value="Monthly">Monthly</option>
+              <option value="Yearly">Yearly</option>
+            </select>
+          </div>
+          <input type="submit" value="+ Add Habit" />
+        </form>
+  
+        <ul class="habits">
+          <li>Loading...</li>
+        </ul>
+      </div>
 
  
     
     
-    <header class="container-for-habit-builder">
+    <!-- <header class="container-for-habit-builder">
       <h1 class="h1-for-habit-builder">Habit Builder</h1>
     </header>
     <section class="habit-builder">
@@ -134,7 +166,7 @@
         <progress class="habit-progress" value="90" max="100"></progress>
         <button class="habit-button">Update Progress</button>
       </section>
-    </section>
+    </section> -->
 
   <script src="main.js"></script>
 </body>
