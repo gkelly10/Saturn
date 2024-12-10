@@ -75,7 +75,7 @@ form .btn {
 }
 
 form .btn:hover {
-    background-color: #ec971f;
+    background-color: #2980b9; /* Darker blue */
 }
 
 /* Style footer links */

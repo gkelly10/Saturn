@@ -551,13 +551,15 @@ body {
   margin-left: 19%;
 }
 
-.h1-for-quote-generator {
+ .h1-for-quote-generator {
   font-size: 1.8em;
   color: #38446b;
   text-align: center;
   margin-bottom: 10px;
   margin-left: 144px;
-}
+} 
+
+
 
 .quote-widget {
   width: 96%;
