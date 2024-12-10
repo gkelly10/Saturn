@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #a6e0c3; /* Light green */
+    color: #38446b; /* Deep blue-gray */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+/* Style the container */
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Center the header */
+h1 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Style alert messages */
+.alert {
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #d9534f;
+    border-radius: 4px;
+    padding: 10px 15px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Style form elements */
+form {
+    margin: 0 auto;
+}
+
+form label {
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+form .form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Style the button */
+form .btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #77a0e7;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form .btn:hover {
+    background-color: #ec971f;
+}
+
+/* Style footer links */
+footer p {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+footer p a {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+footer p a:hover {
+    text-decoration: underline;
+}

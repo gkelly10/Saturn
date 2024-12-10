@@ -33,18 +33,12 @@ module.exports = function(app, passport, db) {
         res.redirect('/');
     });
 
-// message board routes ===============================================================
+// routes for crud ===============================================================
   
 
-// app.post('/habitTrackerRoute', (req, res) => {
-    //   db.collection('habitTrackerCollection').save({habit: req.body.habit, accountabuddy: req.body.accountabuddy, minHabitLenght: req.body.minHabitLenght, checkInFrequency: req.body.checkInFrequency}, (err, result) => {
-    //     if (err) return console.log(err)
-    //     console.log('saved to database')
-    //     res.redirect('/profile')
-    //   })
-    // })
-    app.post('/tasks', (req, res) => {//route for passwords | POST method
-      db.collection('tasks').insertOne({//adds a new document to the passwords collection in mongo with the values of website, username, and password (comes from the form)
+
+    app.post('/tasks', (req, res) => {//route for tasks | POST method
+      db.collection('tasks').insertOne({//adds a new document to the tasks collection in mongo with the values of title, and feedback (comes from the form)
           title: req.body.title,
           feedback: req.body.feedback
           // description: req.body.description || '', 
@@ -54,8 +48,8 @@ module.exports = function(app, passport, db) {
           res.redirect('/profile');//redirects back to the root url to refresh the page with the post there now
       });
   });
-  app.post('/tasksDaily', (req, res) => {//route for passwords | POST method
-    db.collection('tasksDaily').insertOne({//adds a new document to the passwords collection in mongo with the values of website, username, and password (comes from the form)
+  app.post('/tasksDaily', (req, res) => {//route for tasksDaily | POST method
+    db.collection('tasksDaily').insertOne({//adds a new document to the tasksDaily collection in mongo with the values of title, and complete (comes from the form)
         title: req.body.title,//sending an object to the back end called title|  it has a property called title that corresponds to what my name=title in my form
         complete: req.body.complete
     }, (err, result) => {
@@ -65,23 +59,7 @@ module.exports = function(app, passport, db) {
     });
 });
 
-    // app.put('/updateHabit', (req, res) => {
-    //   db.collection('habitTrackerCollection')
-    //   .findOneAndUpdate({_id: ObjectID(req.body.habitId)}, {
-    //     $set: {
-    //       habit:req.body.newhabit,
-    //       accountabuddy:req.body.newaccountabuddy,
-    //       minHabitLenght:req.body.newlength,
-    //       checkInFrequency:req.body.newfrequency
-    //     }
-    //   }, {
-    //     sort: {_id: -1},
-    //     upsert: true
-    //   }, (err, result) => {
-    //     if (err) return res.send(err)
-    //     res.send(result)
-    //   })
-    // })
+   
     app.put('/tasks/feedback', (req, res) => {//PUT route for the edits. puts new stuff into the route
       db.collection('tasks')
           .findOneAndUpdate({ _id: new require('mongodb').ObjectId(req.body.id) }, {//this is searching documents by id now//makes it specific for the server what document to update bcs each one has a unique id
@@ -111,53 +89,14 @@ module.exports = function(app, passport, db) {
         });
 });
 
-//   app.get('/profile', (req, res) => {
-//     db.collection('habits').find().toArray((err, habits) => {
-//       if (err) {
-//         return res.status(500).send('Error fetching habits');
-//       }
-//       res.render('profile', { habits });
-//     });
-//   });
-  
 
-  
-//   app.put('/update-progress/:id', (req, res) => {
-//     db.collection('habits').findOneAndUpdate(
-//       { _id: new require('mongodb').ObjectId(req.params.id) },
-//       {
-//         $set: {
-//           progress: req.body.progress 
-//         }
-//       },
-//       { upsert: false },
-//       (err, result) => {
-//         if (err) return res.send(err);
-//         res.send(result);
-//       }
-//     );
-//   });
-
-    // app.delete('/deleteHabit', (req, res) => {
-    //   db.collection('habitTrackerCollection').findOneAndDelete({_id: ObjectID(req.body.habitId)}, (err, result) => {
-    //     if (err) return res.send(500, err)
-    //     res.send('Message deleted!')
-    //   })
-    // })
     app.delete('/tasks', (req, res) => {
       db.collection('tasks').findOneAndDelete({ _id: new require('mongodb').ObjectId(req.body.id) }, (err, result) => {//looking for the doument to dlete//specifies the document to be deleted by id
           if (err) return res.send(500, err);
           res.send('Task deleted!');
       });
   });
-//   app.delete('/tasksDaily', (req, res) => {
-//     console.log('HERE' , req.body.id)
-//     db.collection('tasksDaily').findOneAndDelete({ _id: new require('mongodb').objectId(req.body.id) }, (err, result) => {//looking for the doument to dlete//specifies the document to be deleted by id
 
-//         if (err) return res.send(500, err);
-//         res.send('Task deleted!');
-//     });
-// });
 app.delete('/tasksDaily', (req, res) => {
     console.log(req.body.id)
     db.collection('tasksDaily').findOneAndDelete({_id: ObjectID(req.body.id)}, (err, result) => {
